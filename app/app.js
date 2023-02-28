@@ -23,6 +23,7 @@ app.get("/db_test", function(req, res) {
         console.log(results);
         res.send(results)
     });
+    // saritha patty
 });
 
 // Create a route for /goodbye
