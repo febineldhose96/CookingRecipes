@@ -1,0 +1,88 @@
+extends header 
+block content 
+    style.
+      *{
+      margin: 0;
+      padding:0;
+      }
+      .search-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 5px;
+      
+      }
+      form {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      }
+      input[type=text] {
+      padding: 10px;
+      border: 2px solid black;
+      border-radius: 5px;
+      flex-grow: 1;
+      margin-right: 10px;
+      font-size: 18px;
+      width:500px;
+      }
+      button[type=submit] {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 18px;
+      }
+      .card {
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      background-color: #fff;
+      border: 2px solid black;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-left:20px;
+      margin
+      }
+      .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      }
+      .card h3 {
+      margin: 16px;
+      }
+      .btn {
+        background-color:white ; /* Green */
+        border: 2px solid black;
+        color: black;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline;
+        font-size: 16px;
+        cursor: pointer;
+        margin-left: 5px;
+      }
+      .btn1{
+        border-radius:10px;
+      }
+      .filter{
+        margin-left: 30%;
+      }
+    .search-container
+        form(action='#')
+          input(type='text' placeholder='Search recipe here...')
+          button(type='submit') Search
+    .filter
+      button.btn(type='button') Filter 
+        img(src='https://cdn-icons-png.flaticon.com/128/7693/7693332.png' width='20px')
+      button.btn.btn1(type='button') Top rated
+      button.btn.btn1(type='button') Non-veg
+      button.btn.btn1(type='button') 15 min
+    br
+    br
+    .card
+        img(src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFLoHyEjr5QqItN8tMquwRbP7_RZI25VcHKg&usqp=CAU' alt='Lasagna')
+        h3 How to make a Lasagna

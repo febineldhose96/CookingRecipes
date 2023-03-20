@@ -1,0 +1,68 @@
+html
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Cooking Recipe
+    style.
+      *{
+      margin: 0;
+      padding:0;
+      }
+      nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      background-color: #333;
+      color: #fff;
+      }
+      .logo img {
+      height: 50px;
+      width: auto;
+      margin-left: 20%;
+      }
+      .menu ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      }
+      .menu li {
+      margin: 0 20px;
+      }
+      .menu a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      }
+      .user {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      margin-right: 10%;
+      }
+      .user img {
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      margin-right: 10px;
+      }
+    nav
+      .logo
+        a(href='#')
+        img(src='https://th.bing.com/th/id/OIP.N5PqnzZ-w0Kr9K8UAMmb7AHaFR?w=251&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7' alt='Logo')
+      .menu
+       ul
+        li
+          a(href='#') Home
+        li
+          a(href='#') Public Padlet
+        li
+          a(href='#') FAQ
+      .user
+        img(src='https://th.bing.com/th/id/OIP.vJA8dgR591t4l0WUOQq81QHaHa?w=211&h=211&c=7&r=0&o=5&dpr=1.3&pid=1.7' alt='User Image')
+        span Username
+  block content

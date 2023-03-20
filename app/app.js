@@ -15,8 +15,12 @@ app.set("views", "./app/views");
 const db = require("./services/db");
 
 // Create a route for root - /
+// app.get("/", function (req, res) {
+//   res.render("index");
+// });
+// test
 app.get("/", function (req, res) {
-  res.render("index");
+  res.render("home");
 });
 
 // Task 1 JSON formatted listing of students
