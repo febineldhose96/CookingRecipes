@@ -24,14 +24,28 @@ app.get("/", function (req, res) {
 });
 
 // Task 1 JSON formatted listing of students
-app.get("/all-students", function (req, res) {
-  var sql = "select * from user_details";
+app.get("/home", async function (req, res) {
+  var sql = "select * from recipe_details";
+  var sql1 =
+    "select *,video_type from video_details where video_type='short_video'";
   // As we are not inside an async function we cannot use await
   // So we use .then syntax to ensure that we wait until the
   // promise returned by the async function is resolved before we proceed
-  db.query(sql).then((results) => {
-    console.log(results);
-    res.render("all-students", { data: results });
+  var recipe_details = await db.query(sql).then((res) => res);
+  var [short_recipes, long_recipes] = await db
+    .query(sql1)
+    .then((res) => [
+      recipe_details.filter((e) =>
+        res.map((m) => m.video_id).includes(e.video_id)
+      ),
+      recipe_details.filter(
+        (e) => !res.map((m) => m.video_id).includes(e.video_id)
+      ),
+    ]);
+
+  res.render("home", {
+    long_recipes,
+    short_recipes,
   });
 });
 
