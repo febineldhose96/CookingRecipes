@@ -1,101 +1,135 @@
 extends header 
 block content 
+  link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
   style.
-    *{
-    margin: 0;
-    padding:0;
-    }
-    .search-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 5px;
-
-    }
-    form {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    }
-    input[type=text] {
-    padding: 10px;
-    border: 2px solid black;
-    border-radius: 5px;
-    flex-grow: 1;
-    margin-right: 10px;
-    font-size: 18px;
-    width:500px;
-    }
-    button[type=submit] {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 18px;
-    }
-    .card {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    background-color: #fff;
-    border: 2px solid black;
-    border-radius: 4px;
-    overflow: hidden;
-    margin-left:20px;
-    }
-    .card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    }
-    .p{
-      margin-top:12px;margin-bottom:12px;margin-left:6px
-    }
-    .card h3 {
-    margin: 16px;
-    }
-    .btn {
-      background-color:white ; /* Green */
-      border: 2px solid black;
-      color: black;
-      padding: 10px 20px;
-      text-align: center;
-      text-decoration: none;
-      display: inline;
-      font-size: 16px;
+    .input_wrapper {
+      display: flex;
+      justify-content: center;
+      margin-block:10px;
+      margin-top:15px
+      }
+    .search_input {
+      height: 40px;
+      border-radius: 10px;
+      border-width: 0.5px;
+      font-family: sans-serif;
+      width: 30%;
+      margin-right: 15px;
+      padding-left: 5px;
+      }
+    .search_butn {
+      background-color: coral;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      padding-inline: 20px;
+      }
+    .wrapper_1 {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-inline:20px
+      }
+    .filter_list {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-top:10px;
+      margin-bottom:40px
+      }
+    .filter_item {
+      display: flex;
+      margin-inline: 10px;
+      border-color: cornflowerblue;
+      padding: 5px;
+      border: 0.5px rgb(83, 64, 79) solid;
+      border-radius: 5px;
       cursor: pointer;
-      margin-left: 5px;
-    }
-    .btn1{
-      border-radius:10px;
-    }
-    .filter{
-      margin-left: 30%;
-    }
-  .search-container
-    form(action='#')
-      input(type='text' placeholder='Search recipe here...')
-      button(type='submit') Search
-  .filter
-    button.btn(type='button') Filter 
-      img(src='https://cdn-icons-png.flaticon.com/128/7693/7693332.png' width='20px')
-    button.btn.btn1(type='button') Top rated
-    button.btn.btn1(type='button') Non-veg
-    button.btn.btn1(type='button') 15 min
-  br
-  br
-  .div(style="display: flex;flex-direction:row;justify-content:space-between")
-    .ul
-      each val in long_recipes
-        .li(style="display: inline-block;")
-          .card(style="margin-bottom:20px")
-            img(src=val.thumbnail alt='Lasagna')
-            .p #{val.recipe_name}
-    .ul
-      each val in short_recipes
-        .li
-          .card(style="margin-bottom:8px;width:250px;margin-right:12px")
-            img(src=val.thumbnail alt='Lasagna')
-            .p #{val.recipe_name}
-
+      }
+    .long_vid_wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content:justify;
+      margin-top:12px
+      }
+    .short_txt {
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom:10px
+      }
+    .wrapper_2 {
+      display: flex;
+      flex-direction: column;
+      }
+    .short_vid_wrapper {
+      display: flex;
+      flex-direction: column;
+      height: 60vmax;
+      overflow: scroll;
+      padding-left: 10px;
+      }
+    .shot_vedio_card {
+      height: 200px;
+      width: 200px;
+      object-fit: cover;
+      }
+      .long_vedio_card {
+      height: 200px;
+      width: 350px;
+      object-fit: cover;
+      margin-bottom:10px
+      }
+      .long_li_name {
+      margin-block:10px;
+      font-weight:600
+      }
+    .list_item_long {
+      display: flex;
+      border: 1px black solid;
+      margin-right:20px;
+      cursor: pointer;
+      }
+    .list_item_short {
+      display: flex;
+      border: 1px black solid;
+      margin-bottom: 10px;
+      cursor: pointer;
+      }
+    .li_long {
+      display: flex;
+      flex-direction: column;
+      margin-bottom:20px;
+      }
+    .checked{
+      color:orange
+      }
+  .input_wrapper
+    input.search_input(placeholder="Search new recipes")
+    button.search_butn Search
+  .wrapper_1
+    div
+      ul.filter_list
+        li.filter_item Top-Rated
+        li.filter_item Veg
+        li.filter_item 15 Mins
+      ul.long_vid_wrapper
+        each val in long_recipes
+          .li_long
+            .list_item_long
+              img.long_vedio_card(src=val.thumbnail)
+            p.long_li_name #{val.recipe_name}
+            .div
+              span.fa.fa-star.checked
+              span.fa.fa-star.checked
+              span.fa.fa-star.checked
+              span.fa.fa-star
+              span.fa.fa-star
+    .wrapper_2
+      h2.short_txt Shorts
+      ul.short_vid_wrapper
+        each val in short_recipes
+          li.list_item_short
+            img.shot_vedio_card(src=val.thumbnail)

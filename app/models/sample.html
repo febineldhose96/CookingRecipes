@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <style>
+    .mainwrapper {
+      display: flex;
+      flex-direction: row;
+      background-color: rgba(0, 0, 0, 0.1);
+      position: absolute;
+      top: 0;
+      left: 0px;
+      right: 0;
+      bottom: 0;
+    }
+    .innerwrapper {
+      height: 400px;
+      width: 300px;
+      background-color: white;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    .name_input {
+      margin-block: 10px;
+      height: 30px;
+      width: 200px;
+      border-radius: 8px;
+      border: 0.3px grey solid;
+      padding-left: 10px;
+    }
+    .email_input {
+      margin-block: 10px;
+      height: 30px;
+      width: 200px;
+      border-radius: 8px;
+      border: 0.3px grey solid;
+      padding-left: 10px;
+    }
+    .password_input {
+      margin-block: 10px;
+      height: 30px;
+      width: 200px;
+      border-radius: 8px;
+      border: 0.3px grey solid;
+      padding-left: 10px;
+    }
+    .confirm_input {
+      margin-block: 10px;
+      height: 30px;
+      width: 200px;
+      border-radius: 8px;
+      border: 0.3px grey solid;
+      padding-left: 10px;
+    }
+    .remember_span {
+      margin-block: 10px;
+    }
+    .submit_butn {
+      padding: 10px;
+      background-color: cadetblue;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+  </style>
+  <body>
+    <script>
+      function name(params) {
+        alert("ihgf");
+      }
+    </script>
+    <div class="mainwrapper">
+      <div class="innerwrapper">
+        <h2>Register</h2>
+        <form action="name()">
+          <input placeholder="name" type="text" class="name_input" />
+          <input placeholder="email" type="email" class="email_input" />
+          <input
+            placeholder="password"
+            type="password"
+            class="password_input"
+          />
+          <input
+            placeholder="confirm password"
+            type="password"
+            class="confirm_input"
+          />
+          <span class="remember_span">
+            <input type="checkbox" /> Remember me</span
+          >
+          <button class="submit_butn">Submit</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

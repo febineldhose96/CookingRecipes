@@ -1,0 +1,112 @@
+extends header
+block content
+  meta(charset="UTF-8")
+  meta(http-equiv="X-UA-Compatible", content="IE=Edge")
+  meta(name="viewport", content="width=device-width,initial-scale=1")
+  script.
+    var something = function() {
+      alert('something')
+    }
+  style.
+    .mainwrapper {
+      display: flex;
+      flex-direction: row;
+      }
+    .subwrapper_1 {
+      display: flex;
+      flex-direction: column;
+      width: 30%;
+      justify-content: space-around;
+      padding-left: 10px;
+      padding-top: 20px;
+      align-items: center;
+    }
+    .subwrapper_2 {
+      padding-inline: 10px;
+      padding-top: 20px;
+      width: 100%;
+    }
+    .wrapper_1 {
+      display: flex;
+      flex-direction: column;
+    }
+    .wrapper_2 {
+      display: flex;
+      flex-direction: column;
+      margin-top: 100px;
+    }
+    .upload_vid_img {
+      height: 200px;
+      width: 200px;
+      object-fit: contain;
+    }
+    .thumbnail_vid_img {
+      height: 200px;
+      width: 200px;
+      object-fit: contain;
+    }
+    .butn {
+      width: 100%;
+      height: 30px;
+      cursor: pointer;
+      margin-top: 30px;
+      background-color: chocolate;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    .details_txt {
+      margin-block: 10px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .description_txt {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: medium;
+      margin-top: 30px;
+      margin-bottom:10px
+    }
+    .title_txt {
+      margin-block: 10px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: medium;
+      margin-top: 20px;
+    }
+    .title_input {
+      height: 40px;
+      width: 80%;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .decription_input {
+      padding-bottom: 300px;
+      width: 80%;
+      text-align: left;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .upload_recipe_butn {
+      display: flex;
+      margin-top: 100px;
+      height: 40px;
+      padding-inline: 20px;
+      align-items: center;
+      justify-content: center;
+      background-color: brown;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+  .mainwrapper
+    .subwrapper_1
+      .wrapper_1
+        img.upload_vid_img(src="https://static.vecteezy.com/system/resources/previews/001/936/372/original/cute-bakery-chef-girl-cooking-and-working-in-restaurant-with-recipe-book-and-ladle-cartoon-character-vector.jpg")
+        button.butn Upload Video
+      .wrapper_2
+        img.thumbnail_vid_img(src="https://www.dibustock.com/wp-content/uploads/2019/08/Boy-cooking-with-a-recipe-book.jpg")
+        button.butn Upload Thumbnail
+    .subwrapper_2
+      h2.details_txt DETAILS
+      h3.title_txt Title
+      input.title_input
+      h3.description_txt Description
+      textarea.decription_input(type="text")
+      button.upload_recipe_butn(type='button' onclick='something("ki")') Upload Recipe
