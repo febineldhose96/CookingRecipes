@@ -24,7 +24,7 @@ class Recipe {
       var short_recipes = await db
       .query(sql)
       .then((res) => res);
-    return { short_recipes:[], long_recipes:[] };
+    return { short_recipes, long_recipes };
   }
   // async getHome_recipes(id) {
   //   var sql = "select * from recipe_details";
