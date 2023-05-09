@@ -79,6 +79,7 @@ app.post("/authenticate", async function (req, res) {
     uId = await user.getIdFromEmail();
     if (uId) {
       match = await user.authenticate(params.password);
+      
       if (match) {
         res.redirect("/home");
       } else {
