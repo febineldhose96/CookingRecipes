@@ -1,32 +1,62 @@
 const db = require("../services/db");
+const bcrypt = require("bcryptjs");
 class User {
-  recipe_id;
-  name;
-  constructor(id) {
-    this.recipe_id = id;
+  // Id of the user
+  id;
+
+  // Email of the user
+  email;
+
+  constructor(email) {
+    this.email = email;
   }
-  async getRecipe_id(id) {
-    return this.recipe_id;
+
+  // Get an existing user id from an email address, or return false if not found
+  async getIdFromEmail() {
+    var sql = "SELECT id FROM Users WHERE Users.email = ?";
+    const result = await db.query(sql, [this.email]);
+    // TODO LOTS OF ERROR CHECKS HERE..
+    if (JSON.stringify(result) != "[]") {
+      this.id = result[0].id;
+      return this.id;
+    } else {
+      return false;
+    }
   }
-  async getHome_recipes(id) {
-    var sql = "select * from recipe_details";
-    var sql1 =
-      "select *,video_type from video_details where video_type='short_video'";
-    // As we are not inside an async function we cannot use await
-    // So we use .then syntax to ensure that we wait until the
-    // promise returned by the async function is resolved before we proceed
-    var recipe_details = await db.query(sql).then((res) => res);
-    var [short_recipes, long_recipes] = await db
-      .query(sql1)
-      .then((res) => [
-        recipe_details.filter((e) =>
-          res.map((m) => m.video_id).includes(e.video_id)
-        ),
-        recipe_details.filter(
-          (e) => !res.map((m) => m.video_id).includes(e.video_id)
-        ),
-      ]);
-    return { short_recipes, long_recipes };
+
+  // Add a password to an existing user
+  async setUserPassword(password) {
+    const pw = await bcrypt.hash(password, 10);
+    var sql = "UPDATE Users SET password = ? WHERE Users.id = ?";
+    const result = await db.query(sql, [pw, this.id]);
+    return true;
+  }
+
+  // Add a new record to the users table
+  async addUser(password) {
+    const pw = await bcrypt.hash(password, 10);
+    var sql = "INSERT INTO Users (email, password) VALUES (? , ?)";
+    const result = await db.query(sql, [this.email, pw]);
+    console.log(result.insertId);
+    this.id = result.insertId;
+    return true;
+  }
+
+  // Test a submitted password against a stored password
+  async authenticate(submitted) {
+    // Get the stored, hashed password for the user
+    var sql = "SELECT password FROM Users WHERE Users.id = ?";
+    const result = await db.query(sql, [this.id]);
+    const match = await bcrypt.compare(submitted, result[0].password);
+    console.log("match", match, this.id, result);
+    if (match == true) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
-module.exports = { User };
+
+module.exports = {
+  User,
+};

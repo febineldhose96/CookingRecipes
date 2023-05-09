@@ -15,9 +15,12 @@
       left: 0px;
       right: 0;
       bottom: 0;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.6);
     }
     .innerwrapper {
-      height: 400px;
+      height: 350px;
       width: 300px;
       background-color: white;
       align-items: center;
@@ -70,34 +73,19 @@
       border: none;
       border-radius: 10px;
       margin-top: 20px;
+      text-align: center;
     }
   </style>
   <body>
-    <script>
-      function name(params) {
-        alert("ihgf");
-      }
-    </script>
     <div class="mainwrapper">
       <div class="innerwrapper">
-        <h2>Register</h2>
-        <form action="name()">
-          <input placeholder="name" type="text" class="name_input" />
-          <input placeholder="email" type="email" class="email_input" />
-          <input
-            placeholder="password"
-            type="password"
-            class="password_input"
-          />
-          <input
-            placeholder="confirm password"
-            type="password"
-            class="confirm_input"
-          />
-          <span class="remember_span">
-            <input type="checkbox" /> Remember me</span
-          >
-          <button class="submit_butn">Submit</button>
+        <h2>Login</h2>
+        <form method="post" action="www.programiz.com/user">
+          <label for="firstname">First name:</label>
+          <input type="text" name="firstname" /><br />
+          <label for="lastname">Last name:</label>
+          <input type="text" name="lastname" /><br />
+          <input type="submit" />
         </form>
       </div>
     </div>
