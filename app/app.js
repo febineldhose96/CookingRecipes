@@ -44,6 +44,9 @@ app.get("/", function (req, res) {
 app.get("/detail", function (req, res) {
   res.render("detail");
 });
+app.get("/profile", function (req, res) {
+  res.render("profile");
+});
 // Task 1 JSON formatted listing of students
 app.get("/home", async function (req, res) {
   const recipe_list = await recipe.getHome_recipes();
