@@ -109,6 +109,9 @@ block content
     .checked{
       color:orange
       }
+    a{
+      text-decoration:none
+    }
   .input_wrapper
     input.search_input(placeholder="Search new recipes")
     button.search_butn Search
@@ -120,16 +123,17 @@ block content
         li.filter_item 15 Mins
       ul.long_vid_wrapper
         each val in long_recipes
-          .li_long
-            .list_item_long
-              img.long_vedio_card(src=val.thumbnail)
-            p.long_li_name #{val.recipe_name}
-            .div
-              span.fa.fa-star.checked
-              span.fa.fa-star.checked
-              span.fa.fa-star.checked
-              span.fa.fa-star
-              span.fa.fa-star
+          a(href='detail')
+            .li_long
+              .list_item_long
+                img.long_vedio_card(src=val.thumbnail)
+              p.long_li_name #{val.recipe_name}
+              .div
+                span.fa.fa-star.checked
+                span.fa.fa-star.checked
+                span.fa.fa-star.checked
+                span.fa.fa-star
+                span.fa.fa-star
     .wrapper_2
       h2.short_txt Shorts
       ul.short_vid_wrapper
