@@ -54,6 +54,9 @@ html
       border-radius: 50%;
       margin-right: 10px;
       }
+      .a_tag{
+        color:white
+      }
     nav
       .logo
         a(href='#')
@@ -61,13 +64,12 @@ html
       .menu
         ul
           li
-            a(href='#') Home
+            a(href='home') Home
           li
             a(href='#') Public Padlet
           li
             a(href='#') FAQ
       .user
-        a(href='profile')
-          img(src='https://w7.pngwing.com/pngs/19/480/png-transparent-cooking-chef-hand-painted-cook-logo-watercolor-painting-free-logo-design-template-hand.png' alt='User Image' style='cursor:pointer')
-          span Usef Ali Khan
+        img(src='https://w7.pngwing.com/pngs/19/480/png-transparent-cooking-chef-hand-painted-cook-logo-watercolor-painting-free-logo-design-template-hand.png' alt='User Image' style='cursor:pointer')
+        a(href='profile',class='a_tag') Usef Ali Khan
   block content
