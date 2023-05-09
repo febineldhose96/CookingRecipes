@@ -33,7 +33,13 @@ app.use(
   })
 );
 app.get("/", function (req, res) {
-  res.render("login");
+  console.log(req.session);
+  if (req.session.uid) {
+    res.send("Welcome back, " + req.session.uid + "!");
+  } else {
+    res.render("login");
+  }
+  res.end();
 });
 app.get("/detail", function (req, res) {
   res.render("detail");
@@ -55,10 +61,11 @@ app.get("/login", function (req, res) {
 app.post("/set-password", async function (req, res) {
   params = req.body;
   var user = new User(params.email);
+  console.log("register", params.password);
   try {
     uId = await user.getIdFromEmail();
     if (uId) {
-      // If a valid, existing user is found, set the password and redirect to the users
+      // If a valid, existing user is found, set the password and redirect to the users single-student page
       await user.setUserPassword(params.password);
       res.redirect("/home");
     } else {
@@ -71,19 +78,22 @@ app.post("/set-password", async function (req, res) {
   }
 });
 // Check submitted email and password pair
+// Check submitted email and password pair
 app.post("/authenticate", async function (req, res) {
   params = req.body;
-  console.log(params.password);
-  var user = new User(params?.email);
+  var user = new User(params.email);
   try {
     uId = await user.getIdFromEmail();
     if (uId) {
       match = await user.authenticate(params.password);
       if (match) {
+        req.session.uid = uId;
+        req.session.loggedIn = true;
+        console.log(req.session);
         res.redirect("/home");
       } else {
         // TODO improve the user journey here
-        res.redirect("/home");
+        res.send("invalid password");
       }
     } else {
       res.send("invalid email");
