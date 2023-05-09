@@ -89,6 +89,7 @@ app.post("/authenticate", async function (req, res) {
     uId = await user.getIdFromEmail();
     if (uId) {
       match = await user.authenticate(params.password);
+      
       if (match) {
         req.session.uid = uId;
         req.session.loggedIn = true;
