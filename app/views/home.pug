@@ -113,7 +113,7 @@ block content
       text-decoration:none
     }
   .input_wrapper
-    input.search_input(placeholder="Search new recipes")
+    input.search_input(placeholder="Search new recipes" type="search")
     button.search_butn Search
   .wrapper_1
     div
@@ -123,7 +123,7 @@ block content
         li.filter_item 15 Mins
       ul.long_vid_wrapper
         each val in long_recipes
-          a(href='detail')
+          a(href=`/detail?id=${val.recipe_id}` name='id')
             .li_long
               .list_item_long
                 img.long_vedio_card(src=val.thumbnail)
@@ -138,5 +138,6 @@ block content
       h2.short_txt Shorts
       ul.short_vid_wrapper
         each val in short_recipes
-          li.list_item_short
-            img.shot_vedio_card(src=val.thumbnail)
+          a(href=`/detail?id=${val.recipe_id}` name='id')
+            li.list_item_short
+              img.shot_vedio_card(src=val.thumbnail)

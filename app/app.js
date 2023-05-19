@@ -14,12 +14,6 @@ app.set("view engine", "pug");
 app.set("views", "./app/views");
 
 const { Recipe } = require("./models/recipe");
-
-// Create a route for root - /
-// app.get("/", function (req, res) {
-//   res.render("index");
-// });
-// test
 // Set the sessions
 var session = require("express-session");
 const { User } = require("./models/user");
@@ -41,15 +35,21 @@ app.get("/", function (req, res) {
   }
   res.end();
 });
-app.get("/detail", function (req, res) {
-  res.render("detail");
+app.get("/detail", async function (req, res) {
+  const recipe_details = await recipe.getSingleRecipe(req.query.id);
+  console.log("recipe_details", recipe_details[0]);
+  res.render("detail", { data: recipe_details[0] });
 });
 app.get("/profile", function (req, res) {
   res.render("profile");
 });
+app.get("/upload_recipe", function (req, res) {
+  res.render("upload_recipe");
+});
 // Task 1 JSON formatted listing of students
 app.get("/home", async function (req, res) {
   const recipe_list = await recipe.getHome_recipes();
+  // const recipe_list1 = await recipe.searchRecipe("peruvian");
   res.render("home", { ...recipe_list });
 });
 // Register
@@ -89,7 +89,7 @@ app.post("/authenticate", async function (req, res) {
     uId = await user.getIdFromEmail();
     if (uId) {
       match = await user.authenticate(params.password);
-      
+
       if (match) {
         req.session.uid = uId;
         req.session.loggedIn = true;
